@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Modal from "./Modal";
 
 function App() {
+  const [openModal, isOpenModal] = useState(false);
+
+  const onOpenModal = () => {
+    isOpenModal(true);
+  };
+
+  const onCloseModal = () => {
+    isOpenModal(false);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>안녕하세요 리액트!</h1>
+      <button onClick={onOpenModal}>모달 열기</button>
+      <Modal openModal={openModal} onCloseModal={onCloseModal} />
     </div>
   );
 }
